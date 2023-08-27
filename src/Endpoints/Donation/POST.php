@@ -21,7 +21,7 @@ return function (): void
     validateRequest($httpPayload);
 
     // Load database.
-    $db = require_once __DIR__ . "/../../db.php";
+    $db = require_once __DIR__ . "/../../Core/Database.php";
 
     // Create the donation.
     $donationId = createDonationInDatabase($db, $httpPayload);

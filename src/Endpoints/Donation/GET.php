@@ -8,7 +8,7 @@ use PDO;
 return function (int $donationId): void
 {
     // Load the database.
-    $db = require_once __DIR__ . "/../../db.php";
+    $db = require_once __DIR__ . "/../../Core/Database.php";
 
     // Respond all requests as JSON.
     header("Content-type: application/json");

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core\Router;
+
 /**
  * Configure the HTTP routes of our application using a simple system.
  * 
@@ -13,8 +15,8 @@
  *   - Laravel: https://laravel.com/docs/10.x/routing
  */
 
-define("ENDPOINTS_PATH", __DIR__ . "/Endpoints");
-define("DONATIONS_PATH", ENDPOINTS_PATH . "/Donation");
+define("ENDPOINTS_PATH", __DIR__ . "/../Endpoints");
+define("DONATIONS_PATH", ENDPOINTS_PATH . "/../Donation");
 
 // Normalize the Request URI.
 // Removes leading and trailing whitespace and slashes from the URI.

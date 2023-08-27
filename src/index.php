@@ -16,6 +16,6 @@ require_once __DIR__ . "/../vendor/autoload.php";
 /**
  * Configure the pages of our system.
  */
-$resultForWebServer = require_once __DIR__ . "/router.php";
+$resultForWebServer = require_once __DIR__ . "/Core/Router.php";
 
 return $resultForWebServer;
