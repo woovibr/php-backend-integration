@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core\Database;
+
 /**
  * In this example, we use a simple database using SQLite.
  */
@@ -7,7 +9,7 @@
 static $db;
 
 if (is_null($db)) {
-    $path = __DIR__ . "/../db.sqlite";
+    $path = __DIR__ . "/../../db.sqlite";
 
     // @see https://www.php.net/manual/en/ref.pdo-sqlite.connection.php#105350
     $db = new PDO(
