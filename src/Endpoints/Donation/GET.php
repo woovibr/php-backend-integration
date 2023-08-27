@@ -1,11 +1,19 @@
 <?php
 
+namespace App\Endpoints\Donation\GET;
+
+use PDO;
+
 // Endpoint: `GET /donation/{donationId}`
 return function (int $donationId): void
 {
     // Load the database.
     $db = require_once __DIR__ . "/../../db.php";
 
+    // Respond all requests as JSON.
+    header("Content-type: application/json");
+
+    // Find the donation.
     $donation = findDonationById($db, $donationId);
 
     if (empty($donation)) {
@@ -25,7 +33,7 @@ function findDonationById(PDO $db, int $donationId): array
     $query = $db->prepare("SELECT * FROM Donation WHERE id = ?");
     $query->execute([$donationId]);
 
-    $result = $query->fetch();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
 
     if ($result === false) return [];
 

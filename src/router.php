@@ -13,6 +13,9 @@
  *   - Laravel: https://laravel.com/docs/10.x/routing
  */
 
+define("ENDPOINTS_PATH", __DIR__ . "/Endpoints");
+define("DONATIONS_PATH", ENDPOINTS_PATH . "/Donation");
+
 // Normalize the Request URI.
 // Removes leading and trailing whitespace and slashes from the URI.
 $requestUri = trim($_SERVER["REQUEST_URI"], "/\n\r\t\v\x00");
@@ -23,12 +26,14 @@ $requestMethod = $_SERVER["REQUEST_METHOD"];
 // The route arguments, like some ID.
 $routeArgs = explode("/", $requestUri);
 
+// Now we will find the best match for the current request.
+
 // Endpoint: POST `/donation`
 $hasRouteMatch = $requestUri === "donation"
     && $requestMethod === "POST";
 
 if ($hasRouteMatch) {
-    (require_once __DIR__ . "/pages/donation/POST.php")();
+    (require_once DONATIONS_PATH . "/POST.php")();
     exit;
 }
 
@@ -39,7 +44,7 @@ $hasRouteMatch = ! empty($routeArgs[0])
     && $requestMethod === "GET";
 
 if ($hasRouteMatch) {
-    (require_once __DIR__ . "/pages/donation/GET.php")($routeArgs[1]);
+    (require_once DONATIONS_PATH . "/GET.php")($routeArgs[1]);
     exit;
 }
 
