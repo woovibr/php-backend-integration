@@ -35,7 +35,7 @@ $hasRouteMatch = $requestUri === "donation"
     && $requestMethod === "POST";
 
 if ($hasRouteMatch) {
-    (require_once DONATIONS_PATH . "/POST.php")();
+    (require_once DONATIONS_PATH . "/Create.php")();
     exit;
 }
 
@@ -46,7 +46,7 @@ $hasRouteMatch = ! empty($routeArgs[0])
     && $requestMethod === "GET";
 
 if ($hasRouteMatch) {
-    (require_once DONATIONS_PATH . "/GET.php")($routeArgs[1]);
+    (require_once DONATIONS_PATH . "/GetOne.php")($routeArgs[1]);
     exit;
 }
 
