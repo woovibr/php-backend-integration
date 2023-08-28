@@ -6,9 +6,9 @@ Pix integration example using the [OpenPix](https://openpix.com.br/) Platform. C
 
 This is a REST API designed to send donations. It encompasses the following endpoints:
 
-- **POST /webhook:** Called when a webhook is triggered on the platform.
-- **GET /donation/{donationId}:** Retrieve a donation by its ID.
-- **POST /donation:** Create a new donation.
+- **POST `/webhook`:** Called when a webhook is triggered on the platform.
+- **GET `/donation/{donationId}`:** Retrieve a donation by its ID.
+- **POST `/donation`:** Create a new donation.
 
 ## Setup
 
@@ -24,7 +24,7 @@ Having [Docker compose](https://docs.docker.com/compose/install/) installed, con
 
 ### PHP
 
-Having [Composer](https://getcomposer.org) and PHP >=8.1.0 installed directly on your machine, execute the command ./start-server.sh.
+Having [Composer](https://getcomposer.org) and PHP `>=8.1.0` installed directly on your machine, execute the command `./start-server.sh`.
 
 ## How to access the API
 
