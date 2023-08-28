@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Endpoints\Donation\GET;
+namespace App\Endpoints\Donation\GetOne;
 
 use PDO;
 
