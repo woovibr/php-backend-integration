@@ -16,7 +16,7 @@ namespace App\Core\Router;
  */
 
 define("ENDPOINTS_PATH", __DIR__ . "/../Endpoints");
-define("DONATIONS_PATH", ENDPOINTS_PATH . "/../Donation");
+define("DONATIONS_PATH", ENDPOINTS_PATH . "/Donation");
 
 // Normalize the Request URI.
 // Removes leading and trailing whitespace and slashes from the URI.

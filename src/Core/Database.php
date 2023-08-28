@@ -2,6 +2,8 @@
 
 namespace App\Core\Database;
 
+use PDO;
+
 /**
  * In this example, we use a simple database using SQLite.
  */
