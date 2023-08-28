@@ -23,8 +23,14 @@ return function (): void
     // Load database.
     $db = require_once __DIR__ . "/../../Core/Database.php";
 
+    // A unique ID for the Woovi charge.
+    // @see https://developers.openpix.com.br/en/docs/concepts/correlation-id
+    $correlationID = "php-backend-integration-" . bin2hex(random_bytes(8));
+
+    $donation = $httpPayload + ["correlationID" => $correlationID];
+
     // Create the donation.
-    $donationId = createDonationInDatabase($db, $httpPayload);
+    $donationId = createDonationInDatabase($db, $donation);
 
     // Warn if a error ocurred.
     if (is_null($donationId)) {
@@ -43,10 +49,6 @@ return function (): void
     $client = require_once __DIR__ . "/../../Services/OpenPix.php";
 
     // Create the charge on OpenPix/Woovi platform.
-
-    // A unique ID for charge.
-    // @see https://developers.openpix.com.br/en/docs/concepts/correlation-id
-    $correlationID = "php-backend-integration-" . bin2hex(random_bytes(8));
 
     $result = $client->charges()->create([
         "correlationID" => $correlationID,
@@ -78,6 +80,7 @@ return function (): void
         "id" => $donationId,
         "status" => $donation["status"],
         "brCode" => $brCode,
+        "correlationID" => $donation["correlationID"],
     ]);
 };
 
@@ -87,12 +90,13 @@ return function (): void
 function createDonationInDatabase(PDO $db, array $data): ?int
 {
     $query = $db->prepare(
-        "INSERT INTO Donation (value, comment) VALUES (?, ?)"
+        "INSERT INTO Donation (value, comment, correlationID) VALUES (?, ?, ?)"
     );
 
     $isSuccessful = $query->execute([
         $data["value"],
         $data["comment"],
+        $data["correlationID"],
     ]);
 
     if (! $isSuccessful) return null;
