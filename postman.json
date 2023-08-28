@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "7755ec01-38c4-4f5b-a587-88b53346dcde",
+		"name": "PHP Backend Integration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27711535"
+	},
+	"item": [
+		{
+			"name": "Donation",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"Hello PHP\",\n    \"value\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/donation",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"donation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/donation/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"donation",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Webhook",
+			"item": [
+				{
+					"name": "Callback",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event\": \"OPENPIX:CHARGE_COMPLETED\",\n    \"charge\": {\n        \"correlationID\": \"php-backend-integration-96362fd23681c064\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/webhook",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"webhook"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://0.0.0.0:8080",
+			"type": "string"
+		}
+	]
+}
