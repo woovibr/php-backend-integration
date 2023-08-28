@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  php:
+    build: .
+    volumes:
+      - .:/var/www
+    working_dir: /var/www
+    command: sh -c "chmod +x start-server.sh && ./start-server.sh"
+    ports:
+      - 8080:8080
