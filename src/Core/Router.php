@@ -17,6 +17,7 @@ namespace App\Core\Router;
 
 define("ENDPOINTS_PATH", __DIR__ . "/../Endpoints");
 define("DONATIONS_PATH", ENDPOINTS_PATH . "/Donation");
+define("WEBHOOKS_PATH", ENDPOINTS_PATH . "/Webhook");
 
 // Normalize the Request URI.
 // Removes leading and trailing whitespace and slashes from the URI.
@@ -47,6 +48,16 @@ $hasRouteMatch = ! empty($routeArgs[0])
 
 if ($hasRouteMatch) {
     (require_once DONATIONS_PATH . "/GetOne.php")($routeArgs[1]);
+    exit;
+}
+
+// Endpoint: POST `/webhook`
+$hasRouteMatch = ! empty($routeArgs[0])
+    && $routeArgs[0] === "webhook"
+    && $requestMethod === "POST";
+
+if ($hasRouteMatch) {
+    (require_once WEBHOOKS_PATH . "/Callback.php")();
     exit;
 }
 

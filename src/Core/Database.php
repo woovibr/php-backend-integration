@@ -26,6 +26,7 @@ if (is_null($db)) {
             comment TEXT,
             status TEXT DEFAULT 'OPEN',
             brCode TEXT,
+            correlationID TEXT,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
         );
