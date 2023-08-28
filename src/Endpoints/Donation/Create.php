@@ -6,7 +6,7 @@ use PDO;
 use function App\Endpoints\Donation\GetOne\findDonationById;
 
 // For finding a donation.
-require_once __DIR__ . "/GET.php";
+require_once __DIR__ . "/GetOne.php";
 
 // Endpoint: POST `/donation`.
 return function (): void
